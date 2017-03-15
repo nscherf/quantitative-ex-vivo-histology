@@ -94,3 +94,15 @@
 		- what plugins and libraries are out there?
 	- look at some data to get a feeling for how it looks like
 2. find a project name (?)
+
+#2 histological staining protocols used
+
+- Neuronal density: NeuN, Nissl, GAP43, SMI-32
+- Myelin density: SMI-94
+- COx: QSH established antibody detail: http://www.abcam.com/mtco1-antibody-1d6e1a8-ab14705.html
+- Neurofilament: NF200, SMI-31 (phosphorylated)
+- Astrocytes: GFAP, Iba1 (microglia)
+- Tau: AT8 antibody recognises phosphorylated PHF tau, 
+- A-beta: A-beta used for plaques in the brain, neurofibrillary tangles and cerebrovascular deposits
+- Free iron detection: try using method from http://dx.doi.org/10.1073/pnas.0911177107
+- Ferritin: ARL wonders if this antibody would be suitable: http://www.abcam.com/ferritin-light-chain-antibody-ab69090.html , she will ask Sebastian.   
