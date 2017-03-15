@@ -93,4 +93,4 @@
 		- what has been done in terms of analysis of histological image data?
 		- what plugins and libraries are out there?
 	- look at some data to get a feeling for how it looks like
-2. find a project name
+2. find a project name (?)
