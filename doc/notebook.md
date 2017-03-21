@@ -11,18 +11,25 @@
 -----------
 
 ##ideas
+- FIJI/ImageJ tools:
+	- https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
 - color processing:
 	- color deconvolution
-	- low rank matrix factorization
+		- http://imagej.net/Colour_Deconvolution
+		- https://www.fmhs.auckland.ac.nz/assets/fmhs/sms/biru/docs/Using%20Colour%20Deconvolution%20in%20ImageJ.pdf
 - cytology statistics
 	- cell counting
-	- fibre density
-		- improved version of my script
-	- fibre orientation 
-		- MVEF
-		- alternatives? 
+		- cell nuclei detection
+			- http://imagej.net/Particle_Analysis
+			- http://imagej.net/Nuclei_Watershed_Separation
+		- blob detection
+			- https://imagej.net/IJ_Blob
+	- fibre density and orientation
+		- MVEF, Vesselness Filter
+			- http://imagej.net/Frangi
+			- https://www.longair.net/edinburgh/imagej/tubeness/
 	- network properties
-		- see work by Karsten
+		- ... (see work by Karsten)
 
 
 ##necessary preparation: literature, tools:
