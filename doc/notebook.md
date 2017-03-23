@@ -24,6 +24,9 @@
 			- http://imagej.net/Nuclei_Watershed_Separation
 		- blob detection
 			- https://imagej.net/IJ_Blob
+		- other options:
+			- https://imagej.net/Getting_started_with_TrackMate
+			- http://mosaic.mpi-cbg.de/?q=downloads/imageJ
 	- fibre density and orientation
 		- MVEF, Vesselness Filter
 			- http://imagej.net/Frangi
