@@ -10,6 +10,18 @@
 
 -----------
 
+**some tutorials on image analysis**
+
+- a nice introduction to digital images and analysis with ImageJ/FIJI
+	- https://blogs.qub.ac.uk/ccbg/files/2014/05/2014-05_Analyzing_fluorescence_microscopy_images.pdf
+- introductory slides for ImageJ/FIJI
+	- https://imagej.github.io/presentations/fiji-introduction/#/23
+- some thoughts on images and image analysis
+	- http://imagej.net/Principles
+- processing the image values
+	- http://imagej.net/Image_Intensity_Processing
+
+
 ##ideas
 - FIJI/ImageJ tools:
 	- https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
