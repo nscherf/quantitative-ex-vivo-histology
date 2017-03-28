@@ -97,7 +97,7 @@
 	- start simple (low hanging fruits first) and then improve
 - automated registration could be hard to achieve
 
-## important aspects
+# important aspects
 - care about documentation of structure of computational analysis:
 	- see GEPfSCP
 - test steps of analysis:
@@ -106,18 +106,17 @@
 	- look for annotated data from Grand Challenges or so...
 - 
 
-##work plan
-1. (gently) get into the topic
-	- look up the list of histological stainings they've used in London
-	- read some papers / books
-	- talk to Luke, Kerrin, Evgenyia
-	- research on ImageJ/FIJI and Python
-		- what has been done in terms of analysis of histological image data?
-		- what plugins and libraries are out there?
-	- look at some data to get a feeling for how it looks like
-2. find a project name (?)
+# work plan
+- neuronal density:
+	- use GAP43 staining: 2016-09-30-19-12-14
+	- open image in ... resolution
+	- run spot detection (using TrackMate)
+	- export xml (?) result
 
-#2 histological staining protocols used
+# run ImageJ on compute servers
+- 
+
+# histological staining protocols used
 
 - Neuronal density: NeuN, Nissl, GAP43, SMI-32
 - Myelin density: SMI-94
