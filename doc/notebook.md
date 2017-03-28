@@ -22,7 +22,7 @@
 	- http://imagej.net/Image_Intensity_Processing
 
 
-##ideas
+## ideas
 - FIJI/ImageJ tools:
 	- https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
 - color processing:
@@ -47,9 +47,9 @@
 		- ... (see work by Karsten)
 
 
-##necessary preparation: literature, tools:
+## necessary preparation: literature, tools:
 
-###reading
+### reading
 
 - neuro-anatomy:
 	- look up stainings
@@ -82,7 +82,7 @@
 	- R
 	- Git / GitHub
 
-##goals
+## goals
 - mapping of fine-structural features to MRI data based on manually defined ROIs
 - simple software tool that bundles functionality: the extraction of cytological and processual features from 2D histological sections:
 	1. a Python package
@@ -97,7 +97,7 @@
 	- start simple (low hanging fruits first) and then improve
 - automated registration could be hard to achieve
 
-# important aspects
+## important aspects
 - care about documentation of structure of computational analysis:
 	- see GEPfSCP
 - test steps of analysis:
@@ -106,17 +106,17 @@
 	- look for annotated data from Grand Challenges or so...
 - 
 
-# work plan
+## work plan
 - neuronal density:
 	- use GAP43 staining: 2016-09-30-19-12-14
 	- open image in ... resolution
 	- run spot detection (using TrackMate)
 	- export xml (?) result
 
-# run ImageJ on compute servers
+## run ImageJ on compute servers
 - 
 
-# histological staining protocols used
+## histological staining protocols used
 
 - Neuronal density: NeuN, Nissl, GAP43, SMI-32
 - Myelin density: SMI-94
