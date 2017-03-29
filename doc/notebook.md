@@ -112,6 +112,9 @@
 	- open image in ... resolution
 	- run spot detection (using TrackMate)
 	- export xml (?) result
+- fibre density 
+	- use SMI-94 stainting: 2016-08-24-09-10-29
+	- 
 
 ## run ImageJ on compute servers
 - 
