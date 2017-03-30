@@ -114,7 +114,10 @@
 	- export xml (?) result
 - fibre density 
 	- use SMI-94 stainting: 2016-08-24-09-10-29
-	- 
+- extracting cortical layers
+	- (manual) delineation of gray matter/CSF boundary and white matter/gray matter boundary
+		- https://github.com/fiji/Live_Wire
+		- multi-point line in FIJI
 
 ## run ImageJ on compute servers
 - 
