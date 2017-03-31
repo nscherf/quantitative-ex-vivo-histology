@@ -118,6 +118,16 @@
 	- (manual) delineation of gray matter/CSF boundary and white matter/gray matter boundary
 		- https://github.com/fiji/Live_Wire
 		- multi-point line in FIJI
+		
+- macro programming FIJI
+	- build a color-deconvolution macro that 
+		- takes the currently active/open image
+		- applies Color Deconvolution
+		- saves the resulting 3 images to a folder
+	- build a deconvolove-files-from-dir macro that
+		- opens a directory
+		- gets all the file names of the files contained in that folder
+		- applies the color-deconvolution macro to each of the images in succession 
 
 ## run ImageJ on compute servers
 - 
