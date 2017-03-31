@@ -128,6 +128,7 @@
 		- opens a directory
 		- gets all the file names of the files contained in that folder
 		- applies the color-deconvolution macro to each of the images in succession 
+	- see: http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory
 
 ## run ImageJ on compute servers
 - 
