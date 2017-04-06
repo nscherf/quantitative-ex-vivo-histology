@@ -32,6 +32,8 @@
 - cytology statistics
 	- cell counting
 		- cell nuclei detection
+			- ITCN
+				- https://www.youtube.com/watch?v=PqHFsmS1_JY
 			- http://imagej.net/Particle_Analysis
 			- http://imagej.net/Nuclei_Watershed_Separation
 		- blob detection
