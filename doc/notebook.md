@@ -47,6 +47,9 @@
 			- https://www.longair.net/edinburgh/imagej/tubeness/
 	- network properties
 		- ... (see work by Karsten)
+	- to do statistics on detected cell regions
+		- http://imagej.net/MorphoLibJ
+		- or maybe: https://imagej.net/IJ_Blob
 
 
 ## necessary preparation: literature, tools:
