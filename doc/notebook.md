@@ -32,6 +32,8 @@
 - cytology statistics
 	- cell counting
 		- cell nuclei detection
+			- ITCN
+				- https://www.youtube.com/watch?v=PqHFsmS1_JY
 			- http://imagej.net/Particle_Analysis
 			- http://imagej.net/Nuclei_Watershed_Separation
 		- blob detection
@@ -45,6 +47,9 @@
 			- https://www.longair.net/edinburgh/imagej/tubeness/
 	- network properties
 		- ... (see work by Karsten)
+	- to do statistics on detected cell regions
+		- http://imagej.net/MorphoLibJ
+		- or maybe: https://imagej.net/IJ_Blob
 
 
 ## necessary preparation: literature, tools:
@@ -112,6 +117,23 @@
 	- open image in ... resolution
 	- run spot detection (using TrackMate)
 	- export xml (?) result
+- fibre density 
+	- use SMI-94 stainting: 2016-08-24-09-10-29
+- extracting cortical layers
+	- (manual) delineation of gray matter/CSF boundary and white matter/gray matter boundary
+		- https://github.com/fiji/Live_Wire
+		- multi-point line in FIJI
+		
+- macro programming FIJI
+	- build a color-deconvolution macro that 
+		- takes the currently active/open image
+		- applies Color Deconvolution
+		- saves the resulting 3 images to a folder
+	- build a deconvolove-files-from-dir macro that
+		- opens a directory
+		- gets all the file names of the files contained in that folder
+		- applies the color-deconvolution macro to each of the images in succession 
+	- see: http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory
 
 ## run ImageJ on compute servers
 - 
