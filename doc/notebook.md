@@ -8,6 +8,11 @@
 - *optional: automated registration + voxel-wise mapping from micro- to macrostructure*
 - *optional: implementation of 2D data analysis in JAVA as plugin for FIJI or alternatively in Python*
 
+___________
+
+**overview of data**
+
+
 -----------
 
 **some tutorials on image analysis**
