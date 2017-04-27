@@ -29,6 +29,7 @@ for id in rand_ids:
 	new_imp.show()
 	fs = FileSaver(new_imp)
 	fs.saveAsTiff(exp_dir+"/extracted_slice_"+str(id)+".tif")
+	new_imp.close()
 	
 
 	
