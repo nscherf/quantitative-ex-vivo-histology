@@ -1,0 +1,28 @@
+
+
+function colordeconvolve(input, filename){
+open(input + filename);
+title = getTitle(); 
+run("Colour Deconvolution", "vectors=[H DAB]");
+selectWindow(title+"-(Colour_3)");
+selectWindow(title+"-(Colour_1)");
+saveAs("Tiff", "C:\\Users\\Filippos Gavriilidis\\Desktop\\Max Planck Institute for Human Cognitive and Brain Sciences\\IMAGES\\fibre-density\\manual-layer-annotation\\SMI-94-tiles\\Color Deconvolution\\"+title+"-(Colour_1).tif");
+selectWindow(title+"-(Colour_2)");
+saveAs("Tiff", "C:\\Users\\Filippos Gavriilidis\\Desktop\\Max Planck Institute for Human Cognitive and Brain Sciences\\IMAGES\\fibre-density\\manual-layer-annotation\\SMI-94-tiles\\Color Deconvolution\\"+title+"-(Colour_2).tif");
+close();
+selectWindow(title+"-(Colour_1).tif");
+close();
+selectWindow(title+"-(Colour_3)");
+close();
+selectWindow("Colour Deconvolution");
+close();
+run("Close");
+}
+
+input = "C:\\Users\\Filippos Gavriilidis\\Desktop\\Max Planck Institute for Human Cognitive and Brain Sciences\\IMAGES\\fibre-density\\manual-layer-annotation\\SMI-94-tiles\\8-splits\\";
+
+setBatchMode(true); 
+list = getFileList(input);
+for (i = 0; i < list.length; i++)
+        colordeconvolve(input,list[i]);
+setBatchMode(false);
