@@ -1,0 +1,17 @@
+function tubeness(input, filename){
+open(input + filename);
+title = getTitle(); 
+run("Invert");
+run("Tubeness", "sigma=4.0000 use");
+saveAs("Tiff", "C:\\Users\\Filippos Gavriilidis\\Desktop\\Max Planck Institute for Human Cognitive and Brain Sciences\\IMAGES\\fibre-density\\manual-layer-annotation\\SMI-94-tiles\\Tubeness\\tubeness of "+title+".tif");
+run("Close");
+run("Close");
+}
+
+input = "C:\\Users\\Filippos Gavriilidis\\Desktop\\Max Planck Institute for Human Cognitive and Brain Sciences\\IMAGES\\fibre-density\\manual-layer-annotation\\SMI-94-tiles\\Brown Channel\\";
+
+setBatchMode(true); 
+list = getFileList(input);
+for (i = 0; i < list.length; i++)
+        tubeness(input,list[i]);
+setBatchMode(false);
