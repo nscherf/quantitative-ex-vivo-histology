@@ -6,7 +6,7 @@
 - ROI based feature mapping histology - MRI
 - manual registration of histology to MRI
 - *optional: automated registration + voxel-wise mapping from micro- to macrostructure*
-- *optional: implementation of 2D data analysis in JAVA as plugin for FIJI or alternatively in Python*
+- *optional: implementation of 2D data analysis in Python*
 
 ___________
 
@@ -46,34 +46,56 @@ QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls
 	- http://imagej.net/Image_Intensity_Processing
 
 
-## ideas
+## current workflow
 - FIJI/ImageJ tools:
-	- https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
 - color processing:
 	- color deconvolution
 		- http://imagej.net/Colour_Deconvolution
 		- https://www.fmhs.auckland.ac.nz/assets/fmhs/sms/biru/docs/Using%20Colour%20Deconvolution%20in%20ImageJ.pdf
+- Machine Learning based segmentation
+	- trainable WEKA segmentation: http://imagej.net/Trainable_Weka_Segmentation [^1 [](https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning)]
+		- use probability maps for downstream steps
 - cytology statistics
-	- cell counting
-		- cell nuclei detection
-			- ITCN
-				- https://www.youtube.com/watch?v=PqHFsmS1_JY
-			- http://imagej.net/Particle_Analysis
-			- http://imagej.net/Nuclei_Watershed_Separation
-		- blob detection
-			- https://imagej.net/IJ_Blob
-		- other options:
-			- https://imagej.net/Getting_started_with_TrackMate
-			- http://mosaic.mpi-cbg.de/?q=downloads/imageJ
+	- to do statistics on detected cell regions
+		- http://imagej.net/MorphoLibJ
 	- fibre density and orientation
 		- MVEF, Vesselness Filter
 			- http://imagej.net/Frangi
 			- https://www.longair.net/edinburgh/imagej/tubeness/
-	- network properties
-		- ... (see work by Karsten)
-	- to do statistics on detected cell regions
-		- http://imagej.net/MorphoLibJ
-		- or maybe: https://imagej.net/IJ_Blob
+
+- network properties
+	- tbd (see work by Karsten Winter)
+		
+
+# alternative options to incorporater into workflow
+
+- https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
+- cell counting
+	- cell nuclei detection
+		- ITCN
+			- https://www.youtube.com/watch?v=PqHFsmS1_JY
+		- http://imagej.net/Particle_Analysis
+		- http://imagej.net/Nuclei_Watershed_Separation
+	- blob detection
+		- https://imagej.net/IJ_Blob
+	- other options:
+		- https://imagej.net/Getting_started_with_TrackMate
+		- http://mosaic.mpi-cbg.de/?q=downloads/imageJ
+		- https://imagej.net/IJ_Blob
+
+# available scripts and macros
+		
+- FIJI macros
+	- color-deconvolution
+		- takes the currently active/open image
+		- applies Color Deconvolution
+		- saves the resulting 3 images to a folder
+	- deconvolove-files-from-dir 
+		- opens a directory
+		- gets all the file names of the files contained in that folder
+		- applies the color-deconvolution macro to each of the images in succession
+	- split image into tiles
+	- tubeness and Franghi vesselness
 
 
 ## necessary preparation: literature, tools:
@@ -81,86 +103,39 @@ QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls
 ### reading
 
 - neuro-anatomy:
-	- look up stainings
-	- cyto- and myeloarchitecture of V1 / V2
-- software tools:
-	- Python
-	- Jupyter
-	- ImageJ / FIJI
+
 - technical papers:
-	- MVEF
-	- color deconvolution
-	- [] cell nuclei detection?
-	- [] ask Luke for more...
-
-- canonical papers
-	- Good Enough Practices in Scientific Programming
-	- 
-
-### software tools:
-
-- FIJI / ImageJ
-	- Python 
-		- Jupyter / IPython
-		- scikit learn
-		- skimage
-		- OpenCV
-		- pandas
-		- search for more...
-	- Matlab
-	- R
-	- Git / GitHub
+	- Arganda-Carreras, Ignacio, Verena Kaynig, Curtis Rueden, Kevin W. Eliceiri, Johannes Schindelin, Albert Cardona, and H. Sebastian Seung. 2017. “Trainable Weka Segmentation: A Machine Learning Tool for Microscopy Pixel Classification.” Bioinformatics , March. doi:10.1093/bioinformatics/btx180.
+	- Frangi, Alejandro F., Wiro J. Niessen, Koen L. Vincken, and Max A. Viergever. 1998. “Multiscale Vessel Enhancement Filtering.” In Medical Image Computing and Computer-Assisted Intervention — MICCAI’98, edited by William M. Wells, Alan Colchester, and Scott Delp, 130–37. Lecture Notes in Computer Science 1496. Springer Berlin Heidelberg.
+	
+- general:
+	- Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2016. “Good Enough Practices in Scientific Computing.” arXiv [cs.SE]. arXiv. http://arxiv.org/abs/1609.00037.
 
 ## goals
-- mapping of fine-structural features to MRI data based on manually defined ROIs
-- simple software tool that bundles functionality: the extraction of cytological and processual features from 2D histological sections:
-	1. a Python package
-	2. a Python/Jupyter notebook
-	3. a FIJI/ImageJ macro/plugin
+- mapping of brain microstructural features from ex vivo histology to MRI data 
+- computational tool that bundles functionality: the extraction of cytological and processual features from 2D histological sections:
+	1. collection of FIJI/ImageJ macro/plugin for processing
+	2. an Python script or notebook for analysing structural features from probability maps
 
 ##potential risks
-- too much manual work might feel too boring (!?)
-- extraction of cell nuclei might not be straightforward or not accurate enough
-	- take care by testing on data with known answer
-- extraction of neurites/axons/processes might be complicated (and inaccurate)
-	- start simple (low hanging fruits first) and then improve
-- automated registration could be hard to achieve
+
+- extraction of neurites/axons/processes might be complicated using current histological data
+	- start simple and then improve
+- automated registration could be hard or impossible to achieve
 
 ## important aspects
-- care about documentation of structure of computational analysis:
-	- see GEPfSCP
-- test steps of analysis:
-	- manually validated data
-	- simulated data
-	- look for annotated data from Grand Challenges or so...
-- 
+- careful documentation of analysis
+- thorough testing
 
-## work plan
+## experiment plan
 - neuronal density:
 	- use GAP43 staining: 2016-09-30-19-12-14
-	- open image in ... resolution
-	- run spot detection (using TrackMate)
-	- export xml (?) result
 - fibre density 
 	- use SMI-94 stainting: 2016-08-24-09-10-29
 - extracting cortical layers
 	- (manual) delineation of gray matter/CSF boundary and white matter/gray matter boundary
 		- https://github.com/fiji/Live_Wire
-		- multi-point line in FIJI
-		
-- macro programming FIJI
-	- build a color-deconvolution macro that 
-		- takes the currently active/open image
-		- applies Color Deconvolution
-		- saves the resulting 3 images to a folder
-	- build a deconvolove-files-from-dir macro that
-		- opens a directory
-		- gets all the file names of the files contained in that folder
-		- applies the color-deconvolution macro to each of the images in succession 
-	- see: http://imagej.net/How_to_apply_a_common_operation_to_a_complete_directory
 
-## run ImageJ on compute servers
-- 
 
 ## histological staining protocols used
 
@@ -172,4 +147,4 @@ QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls
 - Tau: AT8 antibody recognises phosphorylated PHF tau, 
 - A-beta: A-beta used for plaques in the brain, neurofibrillary tangles and cerebrovascular deposits
 - Free iron detection: try using method from http://dx.doi.org/10.1073/pnas.0911177107
-- Ferritin: ARL wonders if this antibody would be suitable: http://www.abcam.com/ferritin-light-chain-antibody-ab69090.html , she will ask Sebastian.   
+- Ferritin: this antibody would be suitable: http://www.abcam.com/ferritin-light-chain-antibody-ab69090.html ,   
