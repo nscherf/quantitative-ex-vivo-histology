@@ -67,7 +67,7 @@ ___________
 	- tbd (see work by Karsten Winter)
 		
 
-# alternative options to incorporater into workflow
+# alternative options to incorporate into workflow
 
 - https://imagej.nih.gov/ij/plugins/ihc-toolbox/index.html
 - cell counting
@@ -82,6 +82,7 @@ ___________
 		- https://imagej.net/Getting_started_with_TrackMate
 		- http://mosaic.mpi-cbg.de/?q=downloads/imageJ
 		- https://imagej.net/IJ_Blob
+- [tools for digital pathology:](https://qupath.github.io/)
 
 # available scripts and macros
 		
