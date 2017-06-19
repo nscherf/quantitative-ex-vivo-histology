@@ -6,8 +6,11 @@ function getOrientation(input, output, filename){
 	run("Close");
 }
 
-input="/Users/scherf/projects/hMRI/CLARITY-image-analysis/results/classfication-results/class1-files/"
-output="/Users/scherf/projects/hMRI/CLARITY-image-analysis/results/test-sample-ROI/orientation/values/"
+input = getDirectory("Choose an input Directory ");
+output = getDirectory("Choose an output Directory ");
+
+# input="/Users/scherf/projects/hMRI/CLARITY-image-analysis/results/classfication-results/class1-files/"
+# output="/Users/scherf/projects/hMRI/CLARITY-image-analysis/results/test-sample-ROI/orientation/values/"
 
 list = getFileList(input);
 for (i = 0; i < list.length; i++)
