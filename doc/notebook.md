@@ -12,24 +12,24 @@ ___________
 
 **overview of data**
 
-01 | Image name | Intended purpose | Stain
--- | ---------- | ---------------- | -----
-02 | 7 B r-USS-_2016-10-06 13_29_06.scn | Free iron detection | Modified Perls (dx.doi.org/10.1073/pnas.0911177107)
-03 | ImageCollection_0000079348_2016-08-23 09_28_45.scn | Astrocytes | GFAP
-04 | ImageCollection_0000079349_2016-08-23 16_32_56.scn | Microglia | Iba1
-05- | ImageCollection_0000079702_2016-08-24 09_21_17.scn | Neuron density | NeuN
-06- | ImageCollection_0000079703_2016-08-24 09_15_29.scn | Neurofilaments | NF200
-07 | ImageCollection_0000079704_2016-08-24 09_10_29.scn | Myelin density | SMI-94
-08 | ImageCollection_0000079705_2016-08-24 09_06_29.scn | Phosphorylated neurofilaments | SMI-31
-09 | ImageCollection_0000080053_2016-08-26 06_20_48.scn | Neuronal density | SMI-32
-10 | ImageCollection_0000080054_2016-08-26 06_20_48.scn | Cytochrome oxidase | [http://www.abcam.com/mtco1-antibody-1d6e1a8-ab14705.html]
-11 | ImageCollection_0000082605_2016-09-30 19_12_14.scn | Neuronal density | GAP43
-12- | ImageCollection_0000082606_2016-09-30 19_06_06.scn | Ferritin iron | Ferritin?
-13 | ImageCollection_0000082828_2016-09-30 23_07_00.scn | Ferritin iron | Ferritin [http://www.abcam.com/ferritin-light-chain-antibody-ab69090.html]
-14- | ImageCollection_0000083223_2016-10-06 13_23_45.scn | Test modified Perls protocol | Modified Perls [dx.doi.org/10.1073/pnas.0911177107]
-15- | ImageCollection_0000083225_2016-10-06 13_30_57.scn | Test Perls protocol | Perls
-16- | QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls
-MK1 |  I5_BOD_20x.jp2 | myelinated structures | Bodian 
+01 | Image name | Intended purpose | Stain | resolution / pixel size
+-- | ---------- | ---------------- | ----- | -----
+02 | 7 B r-USS-_2016-10-06 13_29_06.scn | Free iron detection | Modified Perls (dx.doi.org/10.1073/pnas.0911177107) |
+03 | ImageCollection_0000079348_2016-08-23 09_28_45.scn | Astrocytes | GFAP |
+04 | ImageCollection_0000079349_2016-08-23 16_32_56.scn | Microglia | Iba1 |
+05- | ImageCollection_0000079702_2016-08-24 09_21_17.scn | Neuron density |  NeuN |
+06- | ImageCollection_0000079703_2016-08-24 09_15_29.scn | Neurofilaments | NF200 |
+07 | ImageCollection_0000079704_2016-08-24 09_10_29.scn | Myelin density | SMI-94 |
+08 | ImageCollection_0000079705_2016-08-24 09_06_29.scn | Phosphorylated neurofilaments | SMI-31 |
+09 | ImageCollection_0000080053_2016-08-26 06_20_48.scn | Neuronal density | SMI-32 |
+10 | ImageCollection_0000080054_2016-08-26 06_20_48.scn | Cytochrome oxidase | [http://www.abcam.com/mtco1-antibody-1d6e1a8-ab14705.html] |
+11 | ImageCollection_0000082605_2016-09-30 19_12_14.scn | Neuronal density | GAP43 |
+12- | ImageCollection_0000082606_2016-09-30 19_06_06.scn | Ferritin iron | Ferritin? |
+13 | ImageCollection_0000082828_2016-09-30 23_07_00.scn | Ferritin iron | Ferritin [http://www.abcam.com/ferritin-light-chain-antibody-ab69090.html] |
+14- | ImageCollection_0000083223_2016-10-06 13_23_45.scn | Test modified Perls protocol | Modified Perls [dx.doi.org/10.1073/pnas.0911177107] |
+15- | ImageCollection_0000083225_2016-10-06 13_30_57.scn | Test Perls protocol | Perls |
+16- | QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls |
+MK1 |  I5_BOD_20x.jp2 | myelinated structures | Bodian | 0.39 micrometer sidelength of pixel
 
 
 
