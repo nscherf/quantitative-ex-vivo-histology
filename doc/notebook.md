@@ -29,33 +29,45 @@ ___________
 14- | ImageCollection_0000083223_2016-10-06 13_23_45.scn | Test modified Perls protocol | Modified Perls [dx.doi.org/10.1073/pnas.0911177107]
 15- | ImageCollection_0000083225_2016-10-06 13_30_57.scn | Test Perls protocol | Perls
 16- | QX16-3127 A 1 2_2016-10-07 11_52_46.scn | Test modified Perls protocol | Perls
+MK1 |  I5_BOD_20x.jp2 | myelinated structures | Bodian 
 
 
 
 -----------
 
-**some tutorials on image analysis**
-
-- a nice introduction to digital images and analysis with ImageJ/FIJI
-	- https://blogs.qub.ac.uk/ccbg/files/2014/05/2014-05_Analyzing_fluorescence_microscopy_images.pdf
-- introductory slides for ImageJ/FIJI
-	- https://imagej.github.io/presentations/fiji-introduction/#/23
-- some thoughts on images and image analysis
-	- http://imagej.net/Principles
-- processing the image values
-	- http://imagej.net/Image_Intensity_Processing
-
 
 ## current workflow
 - FIJI/ImageJ tools:
-- color processing:
-	- color deconvolution
-		- http://imagej.net/Colour_Deconvolution
-		- https://www.fmhs.auckland.ac.nz/assets/fmhs/sms/biru/docs/Using%20Colour%20Deconvolution%20in%20ImageJ.pdf
-- Machine Learning based segmentation
-	- trainable WEKA segmentation: http://imagej.net/Trainable_Weka_Segmentation [^1 [](https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning)]
-		- use probability maps for downstream steps
-- cytology statistics
+### color processing (optional):
+- color deconvolution
+	- http://imagej.net/Colour_Deconvolution
+	- https://www.fmhs.auckland.ac.nz/assets/fmhs/sms/biru/docs/Using%20Colour%20Deconvolution%20in%20ImageJ.pdf
+### Machine Learning based segmentation
+- trainable WEKA segmentation: http://imagej.net/Trainable_Weka_Segmentation [^1 [](https://academic.oup.com/bioinformatics/article-abstract/doi/10.1093/bioinformatics/btx180/3092362/Trainable-Weka-Segmentation-a-machine-learning)]
+	- use probability maps for downstream steps
+- alternative: Ilastik pixel classification workflow [^2 [] (http://ilastik.org/)]
+
+### cytology statistics
+
+#### cell density
+- threshold probability maps (t > 0.5)
+- A)
+	- label connected components
+	- split touching cells / nuclei
+	- count number of objects 
+	- number of objects / area of image
+- B) 
+	- number of white pixels / number of pixels (total)
+#### myelin density
+- split image into regions the size of an MR voxel (use macro *split-img-into-MR-voxels-2D.ijm*) 
+- threshold probability maps of cell(foreground) class (t>0.5)
+- fraction of white pixels / total pixels
+
+#### myelin orientation
+- split image into regions the size of an MR voxel (use macro *split-img-into-MR-voxels-2D.ijm*) 
+- compute structure tensor at pixel level and export distribution of orientation directions (use macro *get-2d-orientations.ijm*)
+
+#### alternatives:
 	- to do statistics on detected cell regions
 		- http://imagej.net/MorphoLibJ
 	- fibre density and orientation
@@ -97,20 +109,33 @@ ___________
 		- applies the color-deconvolution macro to each of the images in succession
 	- split image into tiles
 	- tubeness and Franghi vesselness
+	- split image into square regions of size corresponding to MR voxels 
+	- run directionality analysis on a folder of images and save orientation distribution as csv files
 
 
 ## necessary preparation: literature, tools:
 
 ### reading
 
-- neuro-anatomy:
 
-- technical papers:
-	- Arganda-Carreras, Ignacio, Verena Kaynig, Curtis Rueden, Kevin W. Eliceiri, Johannes Schindelin, Albert Cardona, and H. Sebastian Seung. 2017. “Trainable Weka Segmentation: A Machine Learning Tool for Microscopy Pixel Classification.” Bioinformatics , March. doi:10.1093/bioinformatics/btx180.
-	- Frangi, Alejandro F., Wiro J. Niessen, Koen L. Vincken, and Max A. Viergever. 1998. “Multiscale Vessel Enhancement Filtering.” In Medical Image Computing and Computer-Assisted Intervention — MICCAI’98, edited by William M. Wells, Alan Colchester, and Scott Delp, 130–37. Lecture Notes in Computer Science 1496. Springer Berlin Heidelberg.
-	
-- general:
-	- Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2016. “Good Enough Practices in Scientific Computing.” arXiv [cs.SE]. arXiv. http://arxiv.org/abs/1609.00037.
+#### some tutorials on image analysis
+
+- a nice introduction to digital images and analysis with ImageJ/FIJI
+	- https://blogs.qub.ac.uk/ccbg/files/2014/05/2014-05_Analyzing_fluorescence_microscopy_images.pdf
+- introductory slides for ImageJ/FIJI
+	- https://imagej.github.io/presentations/fiji-introduction/#/23
+- some thoughts on images and image analysis
+	- http://imagej.net/Principles
+- processing the image values
+	- http://imagej.net/Image_Intensity_Processing
+
+####  neuro-anatomy:
+
+#### technical papers:
+
+- Arganda-Carreras, Ignacio, Verena Kaynig, Curtis Rueden, Kevin W. Eliceiri, Johannes Schindelin, Albert Cardona, and H. Sebastian Seung. 2017. “Trainable Weka Segmentation: A Machine Learning Tool for Microscopy Pixel Classification.” Bioinformatics , March. doi:10.1093/bioinformatics/btx180.
+- Frangi, Alejandro F., Wiro J. Niessen, Koen L. Vincken, and Max A. Viergever. 1998. “Multiscale Vessel Enhancement Filtering.” In Medical Image Computing and Computer-Assisted Intervention — MICCAI’98, edited by William M. Wells, Alan Colchester, and Scott Delp, 130–37. Lecture Notes in Computer Science 1496. Springer Berlin Heidelberg.
+- Wilson, Greg, Jennifer Bryan, Karen Cranston, Justin Kitzes, Lex Nederbragt, and Tracy K. Teal. 2016. “Good Enough Practices in Scientific Computing.” arXiv [cs.SE]. arXiv. http://arxiv.org/abs/1609.00037.
 
 ## goals
 - mapping of brain microstructural features from ex vivo histology to MRI data 
