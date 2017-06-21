@@ -1,5 +1,5 @@
 function getOrientation(input, output, filename){
-	open(input+filename+".png");
+	open(input+filename+".tif");
 	run("Directionality", "method=[Local gradient orientation] nbins=45 histogram=-90 display_table");	
 	selectWindow("Directionality histograms for "+filename+" (using Local gradient orientation)");	
 	saveAs("Results", output+filename+"-.csv");
