@@ -9,9 +9,13 @@ function getOrientation(input, output, filename){
 input = getDirectory("Choose an input Directory ");
 output = getDirectory("Choose an output Directory ");
 
-
 list = getFileList(input);
-for (i = 0; i < list.length; i++)
+nmax = list.length();
+
+n0 = getNumber("start at file #", 1);
+ne = getNumber("stop at file #", nmax);
+
+for (i = n0-1; i < ne; i++)
         getOrientation(input, output, substring(list[i],0,lengthOf(list[i])-4));
 setBatchMode(false);
 
