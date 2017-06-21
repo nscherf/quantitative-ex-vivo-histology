@@ -5,6 +5,12 @@ function getOrientation(input, output, filename){
 	saveAs("Results", output+filename+"-.csv");
 	close("\\Others");
 	close();
+	list = getList("window.titles"); 
+     for (j=0; j<list.length; j++){ 
+     winame = list[j]; 
+     	selectWindow(winame); 
+     run("Close"); 
+     } 
 }
 
 input = getDirectory("Choose an input Directory ");
