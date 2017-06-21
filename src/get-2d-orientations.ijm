@@ -3,7 +3,7 @@ function getOrientation(input, output, filename){
 	run("Directionality", "method=[Local gradient orientation] nbins=45 histogram=-90 display_table");	
 	selectWindow("Directionality histograms for "+filename+" (using Local gradient orientation)");	
 	saveAs("Results", output+filename+"-.csv");
-	run("Close");
+	close("*");
 }
 
 input = getDirectory("Choose an input Directory ");
