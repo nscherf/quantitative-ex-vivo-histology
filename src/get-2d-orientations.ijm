@@ -10,7 +10,7 @@ input = getDirectory("Choose an input Directory ");
 output = getDirectory("Choose an output Directory ");
 
 list = getFileList(input);
-nmax = list.length();
+nmax = list.length;
 
 n0 = getNumber("start at file #", 1);
 ne = getNumber("stop at file #", nmax);
