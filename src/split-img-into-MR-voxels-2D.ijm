@@ -6,21 +6,22 @@ getLocationAndSize(locX, locY, sizeW, sizeH);
 width = getWidth(); 
 height = getHeight(); 
 
-getPixelSize(unit, pw, ph, pd)
+getPixelSize(unit, pw, ph, pd);
 
 tileWidth = round(len / pw); 
 tileHeight = round(len / ph);
 
-n = floor(width / tileWidth);
+nx = floor(width / tileWidth);
+ny = floor(height / tileHeight);
+
 
 print(tileHeight+" "+tileWidth);
+print (ny + " " + nx);
 
-
-
-
-for (y = 0; y < n+1; y++) { 
+for (y = 0; y < ny+1; y++) { 
 	offsetY = y * tileHeight; 
-	for (x = 0; x < n+1; x++) { 
+	for (x = 0; x < nx+1; x++) { 
+		print("Processing tile x:"+x+" y:"+y+"\n");
 		offsetX = x * tileWidth; 
 		selectImage(id); 
  		call("ij.gui.ImageWindow.setNextLocation", locX + offsetX, locY + offsetY); 
@@ -37,3 +38,5 @@ for (y = 0; y < n+1; y++) {
 	
 selectImage(id); 
 close(); 
+
+
