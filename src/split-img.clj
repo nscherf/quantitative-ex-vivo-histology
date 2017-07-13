@@ -49,11 +49,6 @@
 
 
 ;;utility functions from Kyle's funimage lib https://github.com/funimage/funimage/blob/master/src/funimage/imp.clj
-(defn save-imp-as-tiff
-  "Save an image as a tiff."
-  [imp filename]
-  (IJ/saveAsTiff ^ImagePlus imp ^string filename)
-  imp)
 
 (defn get-pixel-unsafe
   "Get pixel without bounds checking (faster)"
@@ -94,7 +89,8 @@
 		    	(.paste imp-tmp)
 		    	(Thread/sleep 1000) 
 		    	;;(.updateAndRepaintWindow imp-tmp)
-		    	(IJ/saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
+		    	(.saveAsTiff (ij.io.FileSaver. imp-tmp) (str output-dir "test-" x "-" y ".tif"))
+		    	;(.saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
 		    	(.close imp-tmp)
 		    )
 	)
