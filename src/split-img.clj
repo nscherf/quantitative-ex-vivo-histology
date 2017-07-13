@@ -83,17 +83,18 @@
 	nx (int (Math/floor (/ img-width tile-width-pixels)))
 	ny (int (Math/floor (/ img-height tile-width-pixels)))
 	]
-
-	(doseq [x (range 2) 
-			y (range 2)]
+	(print (str nx ", " ny))
+	(doseq [x (range nx) 
+			y (range ny)]
 		    (let [imp-tmp (create-tile imp tile-width-pixels)]
+		    	(print (str x ", " y "\n"))
 		    	(.show imp-tmp)
-		    	(.setRoi imp (* x tile-width-pixels) (* y tile-width-pixels) (* (+ x 1) tile-width-pixels) (* (+ y 1) tile-width-pixels))
+		    	(.setRoi imp (* x tile-width-pixels) (* y tile-width-pixels) tile-width-pixels tile-width-pixels)
 		    	(.copy imp false)
 		    	(.paste imp-tmp)
 		    	(Thread/sleep 1000) 
 		    	;;(.updateAndRepaintWindow imp-tmp)
-		    	(IJ/saveAsTiff imp-tmp (str output-dir "test-" x y ".tif"))
+		    	(IJ/saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
 		    	(.close imp-tmp)
 		    )
 	)
