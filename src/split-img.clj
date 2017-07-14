@@ -7,6 +7,7 @@
 (import '(ij ImagePlus))
 (import '(ij.plugin Duplicator))
 (import '(ij.process ImageProcessor))
+(import '(ij.measure Calibration))
 
 (defn get-pixel-width 
 	"Extract actual pixel width (Assuming height is the same for now)."
@@ -32,7 +33,7 @@
 	"Ask for desired width of tiles."
 	[]
 	(let [input-dialog (new ij.gui.GenericDialog "Set tiling parameters")]
-	(.addNumericField input-dialog "width: " 0  0)
+	(.addNumericField input-dialog "width: " 100  0)
 	(.showDialog input-dialog)
 	(when-not (.wasCanceled input-dialog)
 		(.getNextNumber input-dialog)
@@ -67,14 +68,25 @@
   (.setf ^ImageProcessor (.getProcessor imp) x y val)
   imp)
 
+(defn get-calibration
+  "Return the calibration of an imageplus."
+  [^ImagePlus imp]
+  ^ij.measure.Calibration (.getCalibration imp))
+
+ (defn set-calibration
+  "Set the calibration of an imageplus."
+  [^ImagePlus imp ^Calibration cal]
+  (.setCalibration imp cal)
+  imp)
+
 (let [
 	imp (ij.WindowManager/getCurrentImage)
 	pixel-width (get-pixel-width imp)
 	tile-width (get-tile-width)
 	tile-width-pixels (int (/ tile-width pixel-width))
 	output-dir (get-output-dir)
-	img-width (/ (.getWidth imp) pixel-width)
-	img-height (/ (.getHeight imp) pixel-width)
+	img-width (.getWidth imp)
+	img-height (.getHeight imp)
 	nx (int (Math/floor (/ img-width tile-width-pixels)))
 	ny (int (Math/floor (/ img-height tile-width-pixels)))
 	]
@@ -82,6 +94,7 @@
 	(doseq [x (range nx) 
 			y (range ny)]
 		    (let [imp-tmp (create-tile imp tile-width-pixels)]
+		    	(set-calibration imp-tmp (get-calibration imp))
 		    	(print (str x ", " y "\n"))
 		    	(.show imp-tmp)
 		    	(.setRoi imp (* x tile-width-pixels) (* y tile-width-pixels) tile-width-pixels tile-width-pixels)
@@ -96,3 +109,8 @@
 	)
 )
 
+(defn copy-calibration
+  "Copy the calibration from imp-a into imp-b"
+  [^ij.ImagePlus imp-a ^ij.ImagePlus imp-b]
+  (set-calibration imp-b (get-calibration imp-a))
+  imp-b)
