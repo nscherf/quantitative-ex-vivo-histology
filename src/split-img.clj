@@ -79,6 +79,7 @@
   (.setCalibration imp cal)
   imp)
 
+(comment 
 (let [
 	imp (ij.WindowManager/getCurrentImage)
 	pixel-width (get-pixel-width imp)
@@ -102,6 +103,38 @@
 		    	(.paste imp-tmp)
 		    	(Thread/sleep 1000) 
 		    	;;(.updateAndRepaintWindow imp-tmp)
+		    	(.saveAsTiff (ij.io.FileSaver. imp-tmp) (str output-dir "test-" x "-" y ".tif"))
+		    	;(.saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
+		    	(.close imp-tmp)
+		    )
+	)
+))
+
+
+(let [
+	imp (ij.WindowManager/getCurrentImage)
+	pixel-width (get-pixel-width imp)
+	tile-width (get-tile-width)
+	tile-width-pixels (int (/ tile-width pixel-width))
+	output-dir (get-output-dir)
+	img-width (.getWidth imp)
+	img-height (.getHeight imp)
+	nx (int (Math/floor (/ img-width tile-width-pixels)))
+	ny (int (Math/floor (/ img-height tile-width-pixels)))
+	]
+	(print (str nx ", " ny))
+	(doseq [x (range nx) 
+			y (range ny)]
+		    (let [imp-tmp (create-tile imp tile-width-pixels)]
+		    	(set-calibration imp-tmp (get-calibration imp))
+		    	(print (str x ", " y "\n"))
+		    	(.show imp-tmp)
+		    	(doseq [xx (range tile-width-pixels)
+		    		    yy (range tile-width-pixels)]
+		    		   (let [val (get-pixel-unsafe imp (+ (* x tile-width-pixels) xx) (+ (* y tile-width-pixels) yy))]
+		    		   		(put-pixel-double-unsafe imp-tmp xx yy	val)
+		    		   )
+		    	)
 		    	(.saveAsTiff (ij.io.FileSaver. imp-tmp) (str output-dir "test-" x "-" y ".tif"))
 		    	;(.saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
 		    	(.close imp-tmp)
