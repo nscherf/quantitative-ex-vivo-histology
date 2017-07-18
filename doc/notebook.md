@@ -64,8 +64,15 @@ MK1 |  I5_BOD_20x.jp2 | myelinated structures | Bodian | 0.39 micrometer sidelen
 - fraction of white pixels / total pixels
 
 #### myelin orientation
-- split image into regions the size of an MR voxel (use macro *split-img-into-MR-voxels-2D.ijm*) 
+- split image into regions the size of an MR voxel (use clojure plugin *split-img.clj*) 
 - compute structure tensor at pixel level and export distribution of orientation directions (use macro *get-2d-orientations.ijm*)
+- compute features of interest from orientation histogram
+	- main orientation (mode of distribution)
+	- dispersion
+	- polar outline plots of histogram
+- visualize results on voxel maps
+- enable masked processing: defining a ROI on voxel-grid and only compute orientation on those regions.
+- wrap up all processing steps into a single clojure script.
 
 #### alternatives:
 	- to do statistics on detected cell regions
