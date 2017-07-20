@@ -54,7 +54,7 @@
 (defn get-pixel-unsafe
   "Get pixel without bounds checking (faster)"
   [^ImagePlus imp x y]
-  (.get ^ImageProcessor (.getProcessor imp) x y))
+  (.getf ^ImageProcessor (.getProcessor imp) x y))
 
 (defn put-pixel-int-unsafe
   "Put a pixel value at x,y of an imageplus without bounds checking."
