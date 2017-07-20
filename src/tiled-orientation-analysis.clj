@@ -57,7 +57,7 @@
 (defn get-pixel-unsafe
   "Get pixel without bounds checking (faster)"
   [^ImagePlus imp x y]
-  (.get ^ImageProcessor (.getProcessor imp) x y))
+  (.getf ^ImageProcessor (.getProcessor imp) x y))
 
 (defn put-pixel-int-unsafe
   "Put a pixel value at x,y of an imageplus without bounds checking."
@@ -119,9 +119,9 @@
 		dir (new Directionality_)
 	]
 	(.setImagePlus dir imp)
-	(.setBinNumber dir 180)
+	(.setBinNumber dir 90)
 	(.setBinStart dir -90)
-	(.setMethod dir fiji.analyze.directionality.Directionality_$AnalysisMethod/LOCAL_GRADIENT_ORIENTATION)
+	(.setMethod dir fiji.analyze.directionality.Directionality_$AnalysisMethod/FOURIER_COMPONENTS)
 	(.computeHistograms dir)
 	(let
 		[hists (vec (.get (.getHistograms dir) 0))
