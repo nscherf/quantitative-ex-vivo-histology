@@ -123,11 +123,33 @@
 	(.setBinStart dir -90)
 	(.setMethod dir fiji.analyze.directionality.Directionality_$AnalysisMethod/FOURIER_COMPONENTS)
 	(.computeHistograms dir)
+	
 	(let
-		[hists (vec (.get (.getHistograms dir) 0))
+		[res (vec (.get (.getHistograms dir) 0))
 		 writer (new CSVWriter (new FileWriter (str output-dir "directionality-histogram-" (format "%05d" x) "-" (format "%05d" y)  ".csv")))
 		]
-		(.writeNext writer (into-array String (map str hists)))
+		(.writeNext writer (into-array String (map str res)))
+		(.close writer)
+	)
+	)
+)
+
+(defn analyze-major-direction [imp x y output-dir]
+	(let [
+		dir (new Directionality_)
+	]
+	(.setImagePlus dir imp)
+	(.setBinNumber dir 90)
+	(.setBinStart dir -90)
+	(.setMethod dir fiji.analyze.directionality.Directionality_$AnalysisMethod/FOURIER_COMPONENTS)
+	(.computeHistograms dir)
+	(.fitHistograms dir)
+	
+	(let
+		[res (vec (.get (.getFitAnalysis dir) 0))
+		 writer (new CSVWriter (new FileWriter (str output-dir "directionality-" (format "%05d" x) "-" (format "%05d" y)  ".csv")))
+		]
+		(.writeNext writer (into-array String (map str res)))
 		(.close writer)
 	)
 	)
@@ -157,7 +179,7 @@
 		    		   		(put-pixel-double-unsafe imp-tmp xx yy	val)
 		    		   )
 		    	)
-		    	(analyze-directionality imp-tmp x y output-dir)
+		    	(analyze-major-direction imp-tmp x y output-dir)
 		    	;(.saveAsTiff imp-tmp (str output-dir "test-" x "-" y ".tif"))
 		    	(.close imp-tmp)
 		    )
