@@ -53,11 +53,7 @@
 
 
 ;;utility functions from Kyle's funimage lib https://github.com/funimage/funimage/blob/master/src/funimage/imp.clj
-(defn copy-calibration
-  "Copy the calibration from imp-a into imp-b"
-  [^ij.ImagePlus imp-a ^ij.ImagePlus imp-b]
-  (set-calibration imp-b (get-calibration imp-a))
-  imp-b)
+
 
 (defn get-pixel-unsafe
   "Get pixel without bounds checking (faster)"
@@ -86,6 +82,12 @@
   [^ImagePlus imp ^Calibration cal]
   (.setCalibration imp cal)
   imp)
+
+  (defn copy-calibration
+  "Copy the calibration from imp-a into imp-b"
+  [^ij.ImagePlus imp-a ^ij.ImagePlus imp-b]
+  (set-calibration imp-b (get-calibration imp-a))
+  imp-b)
 
 (comment 
 (let [
