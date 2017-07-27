@@ -53,6 +53,11 @@
 
 
 ;;utility functions from Kyle's funimage lib https://github.com/funimage/funimage/blob/master/src/funimage/imp.clj
+(defn copy-calibration
+  "Copy the calibration from imp-a into imp-b"
+  [^ij.ImagePlus imp-a ^ij.ImagePlus imp-b]
+  (set-calibration imp-b (get-calibration imp-a))
+  imp-b)
 
 (defn get-pixel-unsafe
   "Get pixel without bounds checking (faster)"
@@ -187,23 +192,4 @@
 )
 
 
-(comment 
-(def dir (new Directionality_))
-(.setImagePlus dir imp)
-(.setBinNumber dir 90)
-(.setBinStart dir -90)
-(.setMethod dir fiji.analyze.directionality.Directionality_$AnalysisMethod/LOCAL_GRADIENT_ORIENTATION)
-(.computeHistograms dir)
-(.fitHistograms dir)
-(def results (.getFitAnalysis dir))
-(vec (.get (.getHistograms dir) 0))
-(def writer (new CSVWriter (new FileWriter "/Users/scherf/Desktop/test.csv")))
-(.writeNext writer (into-array String (map str (vec (.get jarray 0)))))
-(.close writer)
-)
 
-(defn copy-calibration
-  "Copy the calibration from imp-a into imp-b"
-  [^ij.ImagePlus imp-a ^ij.ImagePlus imp-b]
-  (set-calibration imp-b (get-calibration imp-a))
-  imp-b)
